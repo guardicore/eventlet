@@ -455,7 +455,7 @@ def _getaddrinfo_lookup(host, family, flags):
     addrs = []
     if family == socket.AF_UNSPEC:
         err = None
-        for qfamily in [socket.AF_INET6, socket.AF_INET]:
+        for qfamily in [socket.AF_INET]: # remove socket.AF_INET6 due to exceptions
             try:
                 answer = resolve(host, qfamily, False)
             except socket.gaierror as e:
